@@ -31,3 +31,5 @@ torchsde
 safetensors
 psutil
 rich
+openai
+python-dotenv

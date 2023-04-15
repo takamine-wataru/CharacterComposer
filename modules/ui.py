@@ -437,6 +437,7 @@ def create_override_settings_dropdown(tabname, row):
 def create_ui():
     import modules.img2img
     import modules.txt2img
+    import modules.txt2txt
 
     reload_javascript()
 
@@ -444,6 +445,14 @@ def create_ui():
 
     modules.scripts.scripts_current = modules.scripts.scripts_txt2img
     modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
+
+    with gr.Blocks(analytics_enabled=Falese) as txt2txt_interface:
+        # チャットボットUI処理
+        chatbot = gr.Chatbot()
+        input = gr.Textbox(show_label=False, placeholder="メッセージを入力してね").style(container=False)
+        input.submit(fn=modules.txt2txt.txtt2txt, inputs=input, outputs=chatbot) # メッセージ送信されたら、AIと会話してチャット欄に全会話内容を表示
+        input.submit(fn=lambda: "", inputs=None, outputs=input) # （上記に加えて）入力欄をクリア
+
 
     with gr.Blocks(analytics_enabled=False) as txt2img_interface:
         txt2img_prompt, txt2img_prompt_styles, txt2img_negative_prompt, submit, _, _, txt2img_prompt_style_apply, txt2img_save_style, txt2img_paste, extra_networks_button, token_counter, token_button, negative_token_counter, negative_token_button = create_toprow(is_img2img=False)
@@ -1548,18 +1557,19 @@ def create_ui():
 
     interfaces = [
         (txt2img_interface, "txt2img", "txt2img"),
-        (img2img_interface, "img2img", "img2img"),
-        (extras_interface, "Extras", "extras"),
-        (pnginfo_interface, "PNG Info", "pnginfo"),
-        (modelmerger_interface, "Checkpoint Merger", "modelmerger"),
-        (train_interface, "Train", "ti"),
+        (txt2txt_interface, "txt2txt", "txt2txt")
+        # (img2img_interface, "img2img", "img2img"),
+        # (extras_interface, "Extras", "extras"),
+        # (pnginfo_interface, "PNG Info", "pnginfo"),
+        # (modelmerger_interface, "Checkpoint Merger", "modelmerger"),
+        # (train_interface, "Train", "ti"),
     ]
 
-    interfaces += script_callbacks.ui_tabs_callback()
-    interfaces += [(settings_interface, "Settings", "settings")]
+    # interfaces += script_callbacks.ui_tabs_callback()
+    # interfaces += [(settings_interface, "Settings", "settings")]
 
-    extensions_interface = ui_extensions.create_ui()
-    interfaces += [(extensions_interface, "Extensions", "extensions")]
+    # extensions_interface = ui_extensions.create_ui()
+    # interfaces += [(extensions_interface, "Extensions", "extensions")]
 
     shared.tab_names = []
     for _interface, label, _ifid in interfaces:
