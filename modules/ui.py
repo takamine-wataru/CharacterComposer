@@ -450,7 +450,7 @@ def create_ui():
         # チャットボットUI処理
         chatbot = gr.Chatbot()
         input = gr.Textbox(show_label=False, placeholder="メッセージを入力してね").style(container=False)
-        input.submit(fn=modules.txt2txt.txtt2txt, inputs=input, outputs=chatbot) # メッセージ送信されたら、AIと会話してチャット欄に全会話内容を表示
+        input.submit(fn=modules.txt2txt.txt2txt, inputs=input, outputs=chatbot) # メッセージ送信されたら、AIと会話してチャット欄に全会話内容を表示
         input.submit(fn=lambda: "", inputs=None, outputs=input) # （上記に加えて）入力欄をクリア
 
 
