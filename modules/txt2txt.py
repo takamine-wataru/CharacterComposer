@@ -2,12 +2,11 @@ import openai
 import os
 
 
-def txt2txt():
+def txt2txt(user_msg):
 
     global message_history
 
     # .envファイルの内容を読み込見込む
-    load_dotenv()
     openai.api_key = ""
 
     # ユーザの会話を履歴に追加

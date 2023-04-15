@@ -438,6 +438,7 @@ def create_ui():
     import modules.img2img
     import modules.txt2img
     import modules.txt2txt
+    import modules.3dmodel
 
     reload_javascript()
 
@@ -1557,7 +1558,8 @@ def create_ui():
 
     interfaces = [
         (txt2img_interface, "txt2img", "txt2img"),
-        (txt2txt_interface, "txt2txt", "txt2txt")
+        (txt2txt_interface, "txt2txt", "txt2txt"),
+        (three_d_model_interface, "3DModel", "3DModel")
         # (img2img_interface, "img2img", "img2img"),
         # (extras_interface, "Extras", "extras"),
         # (pnginfo_interface, "PNG Info", "pnginfo"),
