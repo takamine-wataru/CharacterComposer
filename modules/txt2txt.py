@@ -1,5 +1,4 @@
 import openai
-from dotenv import load_dotenv
 import os
 
 
@@ -9,7 +8,7 @@ def txt2txt():
 
     # .envファイルの内容を読み込見込む
     load_dotenv()
-    openai.api_key = os.environ['OPENAI_API_KEY']
+    openai.api_key = ""
 
     # ユーザの会話を履歴に追加
     print(user_msg)

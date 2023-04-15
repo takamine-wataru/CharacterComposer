@@ -446,7 +446,7 @@ def create_ui():
     modules.scripts.scripts_current = modules.scripts.scripts_txt2img
     modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
 
-    with gr.Blocks(analytics_enabled=Falese) as txt2txt_interface:
+    with gr.Blocks(analytics_enabled=False) as txt2txt_interface:
         # チャットボットUI処理
         chatbot = gr.Chatbot()
         input = gr.Textbox(show_label=False, placeholder="メッセージを入力してね").style(container=False)
