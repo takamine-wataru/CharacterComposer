@@ -438,7 +438,7 @@ def create_ui():
     import modules.img2img
     import modules.txt2img
     import modules.txt2txt
-    import modules.3dmodel
+    # import modules.3dmodel
 
     reload_javascript()
 
