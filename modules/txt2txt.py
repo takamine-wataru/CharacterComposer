@@ -1,10 +1,11 @@
 import openai
 import os
 
+message_history = []
 
 def txt2txt(user_msg):
 
-    global message_history
+    # global message_history
 
     # .envファイルの内容を読み込見込む
     openai.api_key = ""
@@ -17,10 +18,10 @@ def txt2txt(user_msg):
     })
 
     messages=[
-        {"role": "system", "content": "占い師になりきってください。占い以外の話題になったら話題を逸らして、占いをしたい旨を伝えてください"},
-        {"role": "user", "content": user_cache["input_text_cache"]},
-        {"role": "assistant", "content": user_cache["output_text_cache"]},
-        {"role": "user", "content": text}
+        {"role": "system", "content": "役者として振る舞ってください。あなたは上原亜衣という実在する人物の役をいただきました。上原亜衣になりきって会話してください"},
+        # {"role": "user", "content": user_cache["input_text_cache"]},
+        # {"role": "assistant", "content": user_cache["output_text_cache"]},
+        {"role": "user", "content": user_msg}
     ]
     # chatGPTのレスポンスを受け取る
     response = openai.ChatCompletion.create(
@@ -29,7 +30,7 @@ def txt2txt(user_msg):
     )
 
     # AIの回答を履歴に追加
-    assistant_msg = res.choices[0].message.content
+    assistant_msg = response.choices[0].message.content
     print(assistant_msg)
     message_history.append({
         "role": "assistant",
