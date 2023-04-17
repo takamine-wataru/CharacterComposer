@@ -1568,7 +1568,7 @@ def create_ui():
     ]
 
     # interfaces += script_callbacks.ui_tabs_callback()
-    # interfaces += [(settings_interface, "Settings", "settings")]
+    interfaces += [(settings_interface, "Settings", "settings")]
 
     # extensions_interface = ui_extensions.create_ui()
     # interfaces += [(extensions_interface, "Extensions", "extensions")]

@@ -17,10 +17,14 @@ def txt2txt(user_msg):
         "content": user_msg
     })
 
+    role_content = """
+    役者として振る舞ってください。
+    あなたは上原亜衣という実在する人物の役をいただきました。
+    上原亜衣になりきって会話してください,
+    """
+
     messages=[
-        {"role": "system", "content": "役者として振る舞ってください。あなたは上原亜衣という実在する人物の役をいただきました。上原亜衣になりきって会話してください"},
-        # {"role": "user", "content": user_cache["input_text_cache"]},
-        # {"role": "assistant", "content": user_cache["output_text_cache"]},
+        {"role": "system", "content": role_content},
         {"role": "user", "content": user_msg}
     ]
     # chatGPTのレスポンスを受け取る
